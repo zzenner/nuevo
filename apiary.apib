@@ -1,0 +1,80 @@
+FORMAT: 1A
+HOST: http://ejemplovideos.apiblueprint.org/
+
+# ejemplovideos
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Questions Collection [/videos]
+
+### Listar todos los videos [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "video": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "videos": [
+                    {
+                        "video": "Living",
+                        "visto": 2048
+                    }, {
+                        "video": "Patio",
+                        "visto": 1024
+                    }, {
+                        "video": "Cocina",
+                        "visto": 512
+                    }, {
+                        "video": "Entrada",
+                        "visto": 256
+                    }
+                ]
+            }
+        ]
+
+### crear un nuevo video [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "video": "Favourite programming language?",
+            "videos": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /videos/2
+
+    + Body
+
+            {
+                "video": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "videos": [
+                    {
+                        "video": "Swift",
+                        "visto": 0
+                    }, {
+                        "video": "Python",
+                        "visto": 0
+                    }, {
+                        "video": "Objective-C",
+                        "visto": 0
+                    }, {
+                        "video": "Ruby",
+                        "victo": 0
+                    }
+                ]
+            }
